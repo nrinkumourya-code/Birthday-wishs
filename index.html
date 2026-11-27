@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Surprise ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #170c29, #4b174b, #a83279);
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 65px 20px;
+}
+
+h1 {
+    font-size: 42px;
+    color: #ffb6d9;
+    margin-bottom: 20px;
+}
+
+.name {
+    color: #ff70b7;
+    font-size: 48px;
+    margin: 20px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 20px auto;
+    max-width: 550px;
+}
+
+button {
+    background: #ff4f9a;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 17px;
+    cursor: pointer;
+    margin: 12px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff1680;
+    transform: scale(1.08);
+}
+
+#birthday {
+    display: none;
+    animation: fade 1.5s;
+}
+
+.cake {
+    font-size: 100px;
+    margin: 25px;
+    cursor: pointer;
+}
+
+#message {
+    display: none;
+    background: rgba(255,255,255,0.12);
+    padding: 25px;
+    border-radius: 20px;
+    margin: 25px auto;
+    max-width: 500px;
+    animation: fade 1s;
+}
+
+.heart {
+    position: fixed;
+    bottom: -50px;
+    animation: float 6s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes float {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div id="opening">
+        <h1>Hey, Someone Special! 💗</h1>
+
+        <p>
+            I made something special for you.
+            Are you ready for a little surprise? ✨
+        </p>
+
+        <button onclick="openBirthday()">
+            Open Your Surprise 💝
+        </button>
+    </div>
+
+    <div id="birthday">
+
+        <h1>Happy Birthday 🎂</h1>
+
+        <h2 class="name"> RINKU MOURYA ❤️</h2>
+
+        <p>
+            Today is all about you!
+            May your day be filled with happiness,
+            laughter and beautiful memories. 🌸
+        </p>
+
+        <div class="cake" onclick="blowCandle()">
+            🎂
+        </div>
+
+        <h3 id="candleText">
+            Make a wish and tap the cake! 🕯️
+        </h3>
+
+        <button onclick="showMessage()">
+            One More Surprise 💌
+        </button>
+
+        <div id="message">
+            <h2>A Little Message For You ❤️</h2>
+
+            <p>
+                Some people make the world
+                a little more beautiful just
+                by being in it.
+
+                <br><br>
+
+                Keep smiling, keep shining
+                and always be happy! ✨
+
+                <br><br>
+
+                Once Again, Happy Birthday! 💗
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function openBirthday() {
+
+    document.getElementById("opening").style.display = "none";
+
+    document.getElementById("birthday").style.display = "block";
+
+    createHearts();
+
+}
+
+function showMessage() {
+
+    document.getElementById("message").style.display = "block";
+
+}
+
+function blowCandle() {
+
+    document.getElementById("candleText").innerHTML =
+    "Wish granted! ✨ Happy Birthday! ❤️";
+
+    document.querySelector(".cake").innerHTML = "🎂✨";
+
+}
+
+function createHearts() {
+
+    for(let i = 0; i < 30; i++) {
+
+        let heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerHTML = ["💗","❤️","💕","✨"][
+            Math.floor(Math.random() * 4)
+        ];
+
+        heart.style.left = Math.random() * 100 + "vw";
+
+        heart.style.animationDelay = Math.random() * 5 + "s";
+
+        heart.style.fontSize = "25px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 7000);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
